@@ -67,7 +67,7 @@ def get_unet():
     inputs = Input((1, img_rows, img_cols))
     conv1 = Convolution2D(32, 3, 3, activation='relu', border_mode='same')(inputs)
     conv1 = Convolution2D(32, 3, 3, activation='relu', border_mode='same')(conv1)
-    pool1 = MaxPooling2D(pool_size=(2, 2))(conv1)
+    pool1 = MaxPooling2D(pool_size=(2, 2),dim_ordering="tf")(conv1)
 
     conv2 = Convolution2D(64, 3, 3, activation='relu', border_mode='same')(pool1)
     conv2 = Convolution2D(64, 3, 3, activation='relu', border_mode='same')(conv2)
