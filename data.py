@@ -183,7 +183,7 @@ def load_test_data():
     return imgs_test, imgs_id
 
 if __name__ == '__main__':
-    # create_train_data()
-    # create_test_data()
+    create_train_data()
+    create_test_data()
 
     detseg()
