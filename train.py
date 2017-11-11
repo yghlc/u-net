@@ -134,19 +134,19 @@ def train_and_predict():
     imgs_train = imgs_train.astype('float32')
     imgs_mask_train = imgs_mask_train.astype('float32')
 
-    # imgs_train = preprocess(imgs_train)
-    # imgs_mask_train = preprocess(imgs_mask_train)
-    # print(np.histogram(imgs_train))
-    # print(np.histogram(imgs_mask_train))
+    imgs_train = preprocess(imgs_train)
+    imgs_mask_train = preprocess(imgs_mask_train)
+    print(np.histogram(imgs_train))
+    print(np.histogram(imgs_mask_train))
 
     total=imgs_train.shape[0]
-    # imgs_train/=255.
-    # mean = imgs_train.mean()# (0)[np.newaxis,:]  # mean for data centering
-    # std = np.std(imgs_train)  # std for data normalization
-    # imgs_train -= mean
-    # imgs_train /= std
+    imgs_train/=255.
+    mean = imgs_train.mean()# (0)[np.newaxis,:]  # mean for data centering
+    std = np.std(imgs_train)  # std for data normalization
+    imgs_train -= mean
+    imgs_train /= std
 
-    # imgs_mask_train /= 255.  # scale masks to [0, 1]
+    imgs_mask_train /= 255.  # scale masks to [0, 1]
 
     print('-'*30)
     print('Creating and compiling model...')
