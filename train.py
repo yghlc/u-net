@@ -153,33 +153,33 @@ def train_and_predict():
     print('-'*30)
     model = get_unet()
     
-    # model_checkpoint = ModelCheckpoint('unet.hdf5', monitor='loss',verbose=1, save_best_only=True)
+    model_checkpoint = ModelCheckpoint('unet.hdf5', monitor='loss',verbose=1, save_best_only=True)
 
-    # print('-'*30)
-    # print('Fitting model...')
-    # print('-'*30)
-    # model.fit(imgs_train, imgs_mask_train, batch_size=32, nb_epoch=20, verbose=1, shuffle=True,callbacks=[model_checkpoint])
+    print('-'*30)
+    print('Fitting model...')
+    print('-'*30)
+    model.fit(imgs_train, imgs_mask_train, batch_size=32, nb_epoch=20, verbose=1, shuffle=True,callbacks=[model_checkpoint])
     
-    # batch_size=32
-    # max_iters=10000
-    # for i in range(max_iters):
-    #     data_batch=np.ndarray((batch_size,1,img_rows,img_cols))
-    #     mask_batch=np.ndarray((batch_size,1,img_rows,img_cols))
+    batch_size=32
+    max_iters=10000
+    for i in range(max_iters):
+        data_batch=np.ndarray((batch_size,1,img_rows,img_cols))
+        mask_batch=np.ndarray((batch_size,1,img_rows,img_cols))
         
-    #     for img in range(batch_size):
-    #         idx=np.random.randint(total)
-    #         data_batch[img,0],mask_batch[img,0]=augmentation(imgs_train[idx],imgs_mask_train[idx])
-    #         # plt.subplot(121)
-    #         # plt.imshow(data_batch[img,0])
-    #         # plt.subplot(122)
-    #         # plt.imshow(mask_batch[img,0])
-    #         # plt.show()
-    #         data_batch-=mean
-    #         data_batch/=std
-    #         print(np.histogram(data_batch))
-    #         print(np.histogram(mask_batch))
+        for img in range(batch_size):
+            idx=np.random.randint(total)
+            data_batch[img,0],mask_batch[img,0]=augmentation(imgs_train[idx],imgs_mask_train[idx])
+            # plt.subplot(121)
+            # plt.imshow(data_batch[img,0])
+            # plt.subplot(122)
+            # plt.imshow(mask_batch[img,0])
+            # plt.show()
+            data_batch-=mean
+            data_batch/=std
+            print(np.histogram(data_batch))
+            print(np.histogram(mask_batch))
 
-    #     model.train_on_batch(data_batch,mask_batch)
+        model.train_on_batch(data_batch,mask_batch)
 
     print('-'*30)
     print('Loading and preprocessing test data...')
