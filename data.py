@@ -12,8 +12,10 @@ import string
 import scipy.io
 import pdb
 import PIL.Image as Image
+import  matplotlib
+matplotlib.use('Agg')   # avoid error of "no $DISPLAY environment variable"
 import matplotlib.pyplot as plt
-plt.use('Agg')   # avoid error of "no $DISPLAY environment variable"
+
 import matplotlib as mpl
 from matplotlib.font_manager import FontProperties
 import skimage
