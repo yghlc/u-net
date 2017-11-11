@@ -19,7 +19,7 @@ import skimage
 import skimage.measure
 
 data_path = 'raw/'
-save_path = '/mnt/data1/yihuihe/mnc_small/'
+save_path = 'raw/mnc_small/'
 image_rows = 420
 image_cols = 580
 

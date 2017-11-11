@@ -18,6 +18,7 @@ img_cols = 224
 
 smooth = 1.
 
+data_path = 'raw/mnc_small/'
 
 def dice_coef(y_true, y_pred):
     y_true_f = K.flatten(y_true)
@@ -128,8 +129,8 @@ def train_and_predict():
     print('Loading and preprocessing train data...')
     print('-'*30)
     # imgs_train, imgs_mask_train = load_train_data()
-    imgs_train=np.load("/mnt/data1/yihuihe/mnc/data.npy")
-    imgs_mask_train=np.load("/mnt/data1/yihuihe/mnc/mask.npy")
+    imgs_train=np.load(data_path+"data.npy")
+    imgs_mask_train=np.load(data_path+"mask.npy")
     imgs_train = imgs_train.astype('float32')
     imgs_mask_train = imgs_mask_train.astype('float32')
 
@@ -187,8 +188,8 @@ def train_and_predict():
     imgs_test = preprocess(imgs_test) # TODO: bug
 
     imgs_test = imgs_test.astype('float32')
-    imgs_test -= np.load('/mnt/data1/yihuihe/mnc/mean.npy')
-    imgs_test /=np.load('/mnt/data1/yihuihe/mnc/std.npy')
+    imgs_test -= np.load(data_path+'mean.npy')
+    imgs_test /=np.load(data_path+'std.npy')
 
     print('-'*30)
     print('Loading saved weights...')
